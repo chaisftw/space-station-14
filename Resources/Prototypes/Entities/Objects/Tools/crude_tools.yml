@@ -1,0 +1,42 @@
+- type: entity
+  name: crude wirecutter
+  parent: BaseItem
+  id: CrudeWirecutter
+  description: This slowly kills the wire.
+  components:
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/wirecutter_drop.ogg
+  - type: Tag
+    tags:
+    - PlantSampleTaker
+    - Wirecutter
+  - type: Sprite
+    sprite: Objects/Tools/crude_wirecutters.rsi
+    layers:
+    - state: crude-cutters
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: MeleeWeapon
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Piercing: 1
+    attackRate: 2 #open and close that shit on their arm like hell! because you sure aren't doing any damage with this
+    soundHit:
+      path: "/Audio/Items/wirecutter.ogg"
+  - type: Tool
+    qualities:
+    - Cutting
+    speedModifier: 0.25
+    useSound:
+      path: /Audio/Items/wirecutter.ogg
+  - type: Item
+    sprite: Objects/Tools/crude_wirecutters.rsi
+    storedRotation: -90
+  - type: Construction
+    graph: CrudeWirecutter
+    node: crude_wirecutter
+  - type: ToolTileCompatible
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100

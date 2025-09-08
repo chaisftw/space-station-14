@@ -181,3 +181,11 @@
   targetNode: bagPet
   category: construction-category-clothing
   objectType: Item
+
+- type: construction
+  id: CrudeWirecutter
+  graph: CrudeWirecutter
+  startNode: start
+  targetNode: crude_wirecutter
+  category: construction-category-tools
+  objectType: Item

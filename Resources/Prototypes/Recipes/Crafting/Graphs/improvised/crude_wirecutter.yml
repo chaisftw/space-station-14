@@ -1,0 +1,25 @@
+- type: constructionGraph
+  id: CrudeWirecutter
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: crude_wirecutter
+      steps:
+      - material: Cloth
+        amount: 2
+      - material: Cable
+        amount: 1
+      - tag: GlassShard
+        icon:
+          sprite: Objects/Materials/Shards/shard.rsi
+          state: shard2
+        name: construction-graph-tag-glass-shard
+      - tag: GlassShard
+        icon:
+          sprite: Objects/Materials/Shards/shard.rsi
+          state: shard2
+        name: construction-graph-tag-glass-shard
+        doAfter: 10
+  - node: crude_wirecutter
+    entity: CrudeWirecutter
