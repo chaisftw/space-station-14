@@ -189,3 +189,11 @@
   targetNode: crude_wirecutter
   category: construction-category-tools
   objectType: Item
+
+- type: construction
+  id: CrudeScrewdriver
+  graph: CrudeScrewdriver
+  startNode: start
+  targetNode: crude_screwdriver
+  category: construction-category-tools
+  objectType: Item

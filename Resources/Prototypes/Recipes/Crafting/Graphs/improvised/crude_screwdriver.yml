@@ -1,0 +1,17 @@
+- type: constructionGraph
+  id: CrudeScrewdriver
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: crude_screwdriver
+      steps:
+      - material: MetalRod
+        amount: 1
+      - material: Steel
+        amount: 1
+      - material: WoodPlank
+        amount: 1
+        doAfter: 10
+  - node: crude_screwdriver
+    entity: CrudeScrewdriver

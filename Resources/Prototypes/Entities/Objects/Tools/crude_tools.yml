@@ -2,7 +2,7 @@
   name: crude wirecutter
   parent: BaseItem
   id: CrudeWirecutter
-  description: This slowly kills the wire.
+  description: This barely kills the wire.
   components:
   - type: EmitSoundOnLand
     sound:
@@ -14,7 +14,7 @@
   - type: Sprite
     sprite: Objects/Tools/crude_wirecutters.rsi
     layers:
-    - state: crude-cutters
+    - state: icon
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: MeleeWeapon
     wideAnimationRotation: -90
@@ -39,4 +39,45 @@
   - type: ToolTileCompatible
   - type: PhysicalComposition
     materialComposition:
-      Steel: 100
+      Glass: 50
+
+- type: entity
+  name: crude screwdriver
+  parent: BaseItem
+  id: CrudeScrewdriver
+  description: A frustrating substitute for the real thing. It slips as you try to twist.
+  components:
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/screwdriver_drop.ogg
+  - type: Tag
+    tags:
+    - Screwdriver
+  - type: Sprite
+    sprite: Objects/Tools/crude_screwdriver.rsi
+    layers:
+    - state: icon
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: Item
+    sprite: Objects/Tools/crude_screwdriver.rsi
+    storedRotation: -90
+  - type: MeleeWeapon
+    wideAnimationRotation: -90
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 4
+    soundHit:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - type: Tool
+    qualities:
+    - Screwing
+    speedModifier: 0.25
+    useSound:
+      collection: Screwdriver
+  - type: Construction
+    graph: CrudeScrewdriver
+    node: crude_screwdriver
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 50
