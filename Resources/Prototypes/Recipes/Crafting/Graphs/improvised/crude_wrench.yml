@@ -1,0 +1,17 @@
+- type: constructionGraph
+  id: CrudeWrench
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: crude_wrench
+      steps:
+      - material: MetalRod
+        amount: 1
+      - material: Steel
+        amount: 1
+      - material: Cable
+        amount: 1
+        doAfter: 10
+  - node: crude_wrench
+    entity: CrudeWrench

@@ -81,3 +81,44 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
+
+- type: entity
+  name: crude wrench
+  parent: BaseItem
+  id: CrudeWrench
+  description: This wrench is gammin.
+  components:
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/wrench_drop.ogg
+  - type: Tag
+    tags:
+    - Wrench
+  - type: Sprite
+    sprite: Objects/Tools/crude_wrench.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Tools/crude_wrench.rsi
+    storedSprite:
+      sprite: Objects/Tools/crude_wrench.rsi
+      state: storage
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    attackRate: 1.5
+    damage:
+      types:
+        Blunt: 3
+    soundHit:
+      collection: MetalThud
+  - type: Tool
+    qualities:
+    - Anchoring
+    speedModifier: 0.25
+    useSound:
+      path: /Audio/Items/ratchet.ogg
+  - type: Construction
+    graph: CrudeWrench
+    node: crude_wrench
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 50

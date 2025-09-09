@@ -197,3 +197,11 @@
   targetNode: crude_screwdriver
   category: construction-category-tools
   objectType: Item
+
+- type: construction
+  id: CrudeWrench
+  graph: CrudeWrench
+  startNode: start
+  targetNode: crude_wrench
+  category: construction-category-tools
+  objectType: Item
