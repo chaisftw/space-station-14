@@ -10,7 +10,7 @@
         amount: 1
       - material: Steel
         amount: 1
-      - material: Cable
+      - material: Cloth
         amount: 1
         doAfter: 10
   - node: crude_wrench

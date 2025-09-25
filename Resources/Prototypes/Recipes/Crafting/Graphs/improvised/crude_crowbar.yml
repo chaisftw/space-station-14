@@ -1,15 +1,15 @@
 - type: constructionGraph
-  id: CrudeScrewdriver
+  id: CrudeCrowbar
   start: start
   graph:
   - node: start
     edges:
-    - to: crude_screwdriver
+    - to: crude_crowbar
       steps:
       - material: MetalRod
-        amount: 1
-      - material: WoodPlank
+        amount: 3
+      - material: Cloth
         amount: 2
         doAfter: 10
-  - node: crude_screwdriver
-    entity: CrudeScrewdriver
+  - node: crude_crowbar
+    entity: CrudeCrowbar

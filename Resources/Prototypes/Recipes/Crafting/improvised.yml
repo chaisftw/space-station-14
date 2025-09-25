@@ -205,3 +205,11 @@
   targetNode: crude_wrench
   category: construction-category-tools
   objectType: Item
+
+- type: construction
+  id: CrudeCrowbar
+  graph: CrudeCrowbar
+  startNode: start
+  targetNode: crude_crowbar
+  category: construction-category-tools
+  objectType: Item
