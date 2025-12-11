@@ -1,18 +1,14 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using Content.Shared.Speech;
-using Content.Shared.Speech.Components;
+using Content.Server.Speech.Components;
 using Content.Shared.Speech.EntitySystems;
-using Content.Shared.StatusEffect;
-using Robust.Shared.Prototypes;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Speech.EntitySystems;
 
 public sealed class RatvarianLanguageSystem : SharedRatvarianLanguageSystem
 {
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-
-    private static readonly ProtoId<StatusEffectPrototype> RatvarianKey = "RatvarianLanguage";
 
     // This is the word of Ratvar and those who speak it shall abide by His rules:
     /*
@@ -41,20 +37,18 @@ public sealed class RatvarianLanguageSystem : SharedRatvarianLanguageSystem
     public override void Initialize()
     {
         // Activate before other modifications so translation works properly
-        SubscribeLocalEvent<RatvarianLanguageComponent, AccentGetEvent>(OnAccent, before: new[] {typeof(SharedSlurredSystem), typeof(SharedStutteringSystem)});
+        SubscribeLocalEvent<RatvarianAccentComponent, AccentGetEvent>(OnAccent, before: new[] {typeof(SharedSlurredSystem), typeof(SharedStutteringSystem)});
+        SubscribeLocalEvent<RatvarianAccentComponent, StatusEffectRelayedEvent<AccentGetEvent>>(OnAccentRelayed);
     }
 
-    public override void DoRatvarian(EntityUid uid, TimeSpan time, bool refresh, StatusEffectsComponent? status = null)
-    {
-        if (!Resolve(uid, ref status, false))
-            return;
-
-        _statusEffects.TryAddStatusEffect<RatvarianLanguageComponent>(uid, RatvarianKey, time, refresh, status);
-    }
-
-    private void OnAccent(EntityUid uid, RatvarianLanguageComponent component, AccentGetEvent args)
+    private void OnAccent(Entity<RatvarianAccentComponent> entity, ref AccentGetEvent args)
     {
         args.Message = Translate(args.Message);
+    }
+
+    private void OnAccentRelayed(Entity<RatvarianAccentComponent> entity, ref StatusEffectRelayedEvent<AccentGetEvent> args)
+    {
+        args.Args.Message = Translate(args.Args.Message);
     }
 
     private string Translate(string message)

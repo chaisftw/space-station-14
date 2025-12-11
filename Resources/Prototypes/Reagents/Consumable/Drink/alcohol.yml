@@ -1671,9 +1671,10 @@
   metabolisms:
     Drink:
       effects:
-        - !type:GenericStatusEffect
-          key: RatvarianLanguage
-          component: RatvarianLanguage
+        - !type:ModifyStatusEffect
+          effectProto: StatusEffectRatvarian
+          time: 2
+          type: Update
         - !type:SatiateThirst
           factor: 2
         - !type:AdjustReagent
@@ -2555,3 +2556,42 @@
         - !type:MetabolizerTypeCondition
           type: [Dwarf]
           inverted: true
+
+- type: reagent
+  id: Neverclear
+  name: reagent-name-neverclear
+  parent: BaseAlcohol
+  desc: reagent-desc-neverclear
+  physicalDesc: reagent-physical-desc-strong-smelling
+  contrabandSeverity: Syndicate
+  flavor: alcohol
+  color: "#bad5ff"
+  metamorphicSprite:
+    sprite: Objects/Consumable/Drinks/thesunalsorises.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      metabolismRate : 1
+      effects:
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOblivious
+        time: 30
+        type: Update
+        conditions:
+        - !type:ReagentCondition
+          reagent: Neverclear
+          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectRatvarian
+        time: 30.0
+        type: Update
+        conditions:
+        - !type:ReagentCondition
+          reagent: Neverclear
+          min: 5
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.5

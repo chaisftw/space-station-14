@@ -49,3 +49,11 @@
   name: barkaccent
   components:
   - type: BarkAccent
+
+# Causes you to speak the Ratvarian language pattern. Praise him.
+- type: entity
+  parent: SpeechStatusEffectBase
+  id: StatusEffectRatvarian
+  name: ratvarian language patterns
+  components:
+  - type: RatvarianAccent

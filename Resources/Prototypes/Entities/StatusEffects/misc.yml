@@ -92,3 +92,11 @@
   parent: [ StatusEffectWoozy, StatusEffectSlurred ]
   id: StatusEffectDrunk
   name: drunk
+
+# Causes you to not see do-afters specific to when you are being stripped
+- type: entity
+  parent: StatusEffectBase
+  id: StatusEffectOblivious
+  name: oblivious
+  components:
+  - type: ObliviousStatusEffect

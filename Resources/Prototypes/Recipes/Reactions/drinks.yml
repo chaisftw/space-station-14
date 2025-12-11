@@ -1555,3 +1555,17 @@
       amount: 1
   products:
     BacchusBlessing: 4
+
+- type: reaction
+  id: Neverclear
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    CogChamp:
+      amount: 2
+    Ethanol:
+      amount: 1
+    Vestine:
+      amount: 1
+  products:
+    Neverclear: 1

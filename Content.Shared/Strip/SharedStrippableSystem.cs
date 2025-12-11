@@ -6,6 +6,7 @@ using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -14,6 +15,7 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Oblivious;
 using Content.Shared.Popups;
 using Content.Shared.Strip.Components;
 using Content.Shared.Verbs;
@@ -33,6 +35,8 @@ public abstract class SharedStrippableSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+
+    [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
 
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
 
@@ -644,7 +648,7 @@ public abstract class SharedStrippableSystem : EntitySystem
         RaiseLocalEvent(user, ref userEv);
         var targetEv = new BeforeGettingStrippedEvent(userEv.Time, userEv.Stealth);
         RaiseLocalEvent(targetPlayer, ref targetEv);
-        return (targetEv.Time, targetEv.Stealth);
+        return (targetEv.Time,targetEv.Stealth || _statusEffect.HasEffectComp<ObliviousStatusEffectComponent>(targetPlayer)); // Unfortunately this is as far as I can get :();
     }
 
     private void OnDragDrop(EntityUid uid, StrippableComponent component, ref DragDropDraggedEvent args)
