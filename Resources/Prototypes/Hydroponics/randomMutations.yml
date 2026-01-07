@@ -184,3 +184,7 @@
       baseOdds: 0.036
       persists: false
       effect: !type:PlantMutateHarvest
+    - name: MutatePests
+      baseOdds: 0.036
+      persists: false
+      effect: !type:PlantMutatePests
