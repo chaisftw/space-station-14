@@ -352,7 +352,7 @@ resharper_csharp_prefer_qualified_reference = false
 resharper_csharp_allow_alias = false
 
 [*.{csproj,xml,yml,yaml,dll.config,msbuildproj,targets,props,slnx}]
-indent_size = 2
+indent_size = 4
 
 [nuget.config]
 indent_size = 2

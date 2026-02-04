@@ -1,0 +1,54 @@
+- type: constructionGraph
+  id: Vat
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: vatFrame
+      steps:
+      - material: MetalRod
+        amount: 8
+        doAfter: 4
+
+  - node: vatFrame
+    entity: UnfinishedVatFrame
+    edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: PartRodMetal1
+          amount: 8
+        - !type:DeleteEntity {}
+        steps:
+        - tool: Cutting
+          doAfter: 2
+      - to: vat
+        completed:
+        - !type:AdminLog
+          message: "Construction"
+          impact: High
+        steps:
+        - material: Steel
+          amount: 5
+          doAfter: 1
+        - tag: Pipe
+          icon:
+            sprite: Structures/Piping/Atmospherics/pipe.rsi
+            state: pipeStraight
+          doAfter: 1
+        - tool: Welding
+          doAfter: 6
+        conditions:
+        - !type:EntityAnchored
+
+  - node: vat
+    entity: BaseStructureVat #change
+    edges:
+    - to: vatFrame
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 6
+      steps:
+      - tool: Welding
+        doAfter: 10
